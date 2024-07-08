@@ -6,5 +6,5 @@ export default function Page() {
 }
 
 export const metadata = {
-  ...createHeadMetadata("/"),
+  ...createHeadMetadata("/map"),
 };

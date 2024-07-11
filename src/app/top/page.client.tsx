@@ -88,9 +88,13 @@ const createLogoWrapperTranslateStyle = ({
 }: LogoWrapperProps) => css`
   transition: transform 0.45s ease;
   transform: translate(
-      ${originalLogoImageSize.w * ((position === "bottom" ? 0.5 : 0.26) + offsetX) - logoImageSize.w / 2}px,
-      ${originalLogoImageSize.h * ((position === "bottom" ? 0.85 : 0.85) + offsetY) - logoImageSize.h / 2}px
-    );
+    ${originalLogoImageSize.w *
+      ((position === "bottom" ? 0.5 : 0.26) + offsetX) -
+    logoImageSize.w / 2}px,
+    ${originalLogoImageSize.h *
+      ((position === "bottom" ? 0.85 : 0.85) + offsetY) -
+    logoImageSize.h / 2}px
+  );
 `;
 
 const imageSize = {

@@ -57,7 +57,10 @@ const Page: React.FC = () => {
             </Card.Title>
           }
         >
-          <StyledCardSection delay={(delayCount++) / 10} title="コスプレ入場について">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="コスプレ入場について"
+          >
             ・更衣室開放時間は【10:30〜18:00】の予定となっております。
             <br />
             ・更衣室入室の際は、コスプレ受付にお声がけください。
@@ -68,14 +71,17 @@ const Page: React.FC = () => {
             <br />
             ・一般参加のコスプレ総理は、12:30の一般総理入場開始まで2階廊下でお待ちください。なお、1階や建物外部にコスプレ衣装のまま移動することはできません。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="コスプレ受付について">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="コスプレ受付について"
+          >
             ・イベント入場料の他、コスプレ登録・更衣室使用料として【500円】を頂戴いたします。
             <br />
             ・コスプレ参加名簿に総理ネームをご記入いただきます。ご協力をお願いいたします。
             <br />
             ・当日お困りの事や不明点がございましたら、最寄りの戦挙管理委員までお声がけください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="更衣について">
+          <StyledCardSection delay={delayCount++ / 10} title="更衣について">
             ・更衣室は所定の更衣室のみをご利用ください。
             <br />
             ・トイレでの着替えや、ヘアースプレーなどの使用、地毛及びウィッグのカットは厳禁です。
@@ -86,7 +92,7 @@ const Page: React.FC = () => {
             <br />
             ・更衣室は【18:00完全閉鎖】を予定しておりますが、変更されることがあります。変更があり次第告知いたしますが、閉鎖時間は厳守いただきますようお願いいたします。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="衣装について">
+          <StyledCardSection delay={delayCount++ / 10} title="衣装について">
             ・国内外を問わず、リアルな軍服・国旗・階級章の着用は禁止します。実在の人物、団体とは何の関係もないただの美少女が戦うファンタジーですからね。
             <br />
             ・コスプレや、コスプレと思われるような衣服・派手なメイクでの入退場は禁止です。一般常識の範囲内におさまる服装でご来場ください。
@@ -103,12 +109,18 @@ const Page: React.FC = () => {
             <br />
             ・戦挙管理委員から衣装修正の指示を受けた総理は更衣室に戻り、その箇所を速やかに修正してください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="コスプレ可能エリアについて">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="コスプレ可能エリアについて"
+          >
             ・コスプレは【2階フロアのみ可能】です。
             <br />
             ・コスプレと判断される服装、メイクで1F及び館外へ出られることはお控えください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="会場内マナーについて">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="会場内マナーについて"
+          >
             ・会場内を走ることや、場内・周辺でのパフォーマンス等（走る・飛ぶ・騒ぐ・振り回す・楽器をならす等の行為）はおやめください。事故や怪我のもととなります。
             <br />
             ・長物などは破損や周囲の邪魔になる恐れがありますので、会場外およびサークルスペースではケース等に入れて持ち運びください。
@@ -119,7 +131,10 @@ const Page: React.FC = () => {
             <br />
             ・不審物を発見した場合、不用意に触らず戦挙管理委員をお呼びください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="持ち込み可能物品について">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="持ち込み可能物品について"
+          >
             ・エアガン他、素材が固く、人に当たると危害をあたえるおそれのあるものの持ち込みは禁止です。
             <Card.Contents title="">
               持ち込み
@@ -139,7 +154,7 @@ const Page: React.FC = () => {
             <br />
             ・危険行為（振り回す等）が見られ、戦挙管理委員が危険であると判断した場合、いかなる素材製であっても没収させていただく場合があります。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="撮影について">
+          <StyledCardSection delay={delayCount++ / 10} title="撮影について">
             ・撮影は無料で行えますが、必ず被写体の政霊や総理の許可を取りましょう。
             <br />
             ・動画撮影は厳禁です。

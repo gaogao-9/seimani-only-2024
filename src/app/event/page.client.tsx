@@ -59,19 +59,19 @@ const Page: React.FC = () => {
             </Card.Title>
           }
         >
-          <StyledCardSection delay={(delayCount++) / 10} title="色紙大募集">
+          <StyledCardSection delay={delayCount++ / 10} title="色紙大募集">
             今回も全国の皆さんから色紙を募集します！
             <br />
             会場を政霊たちのイラストで華やかに飾りましょう！
             <br />
             募集条件や宛先は後日お知らせします。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="ホワイトボード">
+          <StyledCardSection delay={delayCount++ / 10} title="ホワイトボード">
             こちらも毎回恒例のホワイトボード！
             <br />
             来場の記念に総理の皆さんからヒトコト～クダサイ～オネガイ～
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="アフターイベント">
+          <StyledCardSection delay={delayCount++ / 10} title="アフターイベント">
             即売会パートの後に開催予定！
             <br />
             企画詳細は後日お知らせします。

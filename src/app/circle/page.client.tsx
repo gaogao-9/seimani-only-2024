@@ -67,26 +67,29 @@ const Page: React.FC = () => {
             </Card.Title>
           }
         >
-          <StyledCardSection delay={(delayCount++) / 10} title="はじめに">
+          <StyledCardSection delay={delayCount++ / 10} title="はじめに">
             当イベントにて二次創作作品の頒布や展示を希望される総理には、サークル参加の事前申込をお願いしております。
             <br />
             下記の諸注意をお読みいただいた上で、所定の方法にてお申し込みください。
             <br />
             なお、ご不明な点がございましたら、お気軽に主催メールアドレス宛にお問い合わせください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="イベント名">
+          <StyledCardSection delay={delayCount++ / 10} title="イベント名">
             政剣マニフェスティアオンリー同人誌即売会
             <br />
             緊急交流イベント「漕ぎ出せ！ソクバイ海Ⅶ」
             <br />
             #アイムソウリー2024
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="日程・会場">
+          <StyledCardSection delay={delayCount++ / 10} title="日程・会場">
             2024年9月15日（日曜日）
             <br />
             ハイライフプラザいたばし
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="イベントスケジュール">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="イベントスケジュール"
+          >
             <Table>
               <Tbody>
                 <Tr>
@@ -129,14 +132,14 @@ const Page: React.FC = () => {
             <br />
             ※スケジュールは変更になることがあります
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="サークル参加資格">
+          <StyledCardSection delay={delayCount++ / 10} title="サークル参加資格">
             ☆「政剣マニフェスティア」の二次創作作品を1点以上頒布または展示できること
             <br />
             ☆ 開催当日までメールで《確実に》連絡可能であること
             <br />
             ☆&quot;戦挙権&quot;を持っている（「政剣マニフェスティア」のプレイヤーである）こと
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="サークル参加費用">
+          <StyledCardSection delay={delayCount++ / 10} title="サークル参加費用">
             1スペース&nbsp;4000円
             <br />
             [含まれるもの]
@@ -179,7 +182,10 @@ const Page: React.FC = () => {
             <br />
             電子チケット導入に伴い『参加費の決済』→『サークル情報の登録』という順番でお申し込みいただきます。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="QRコードチケットについて">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="QRコードチケットについて"
+          >
             QRコードチケットは【1人1枚】必要です。
             <br />
             当日入場時に本チケットのQRコードをイベント本部にてご提示ください。
@@ -214,17 +220,20 @@ const Page: React.FC = () => {
             <br />
             ※2スペース申込時の2スペース目のサークル参加チケットは、サークル追加入場チケットと同様、サークル主からメンバーにお渡しいただくことで、イベント当日の入場時にご利用いただけます。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="決済締切">
+          <StyledCardSection delay={delayCount++ / 10} title="決済締切">
             2024年8月4日（日曜日）&nbsp;23:59:59まで
             <br />
             ※決済後のキャンセルはお受けできません。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="参加申込方法">
+          <StyledCardSection delay={delayCount++ / 10} title="参加申込方法">
             1.【8/4まで】LivePocketページから「サークル参加チケット」をご購入ください。
             <br />
             2.【8/5まで】LivePocketページに記載された「サークル参加フォーム」からサークル情報をご登録ください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="サークルカットについて">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="サークルカットについて"
+          >
             psd形式のテンプレートを用意しております。ご活用ください。
             <br />
             作成上の注意事項は、サークルカットのテンプレート内にある「カット作成の注意点」に記載しております。必ずお読みください。
@@ -236,12 +245,15 @@ const Page: React.FC = () => {
               サークルカットテンプレート(ZIP形式)
             </AnchorLink>
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="宅配便による搬入・搬出">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="宅配便による搬入・搬出"
+          >
             ヤマト運輸の宅急便をご利用いただけます。
             <br />
             伝票の記載例など、注意点は後日改めてご案内します。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="その他">
+          <StyledCardSection delay={delayCount++ / 10} title="その他">
             ・イベント当日、戦挙管理委員（スタッフ）が頒布物の確認を行うことがあります。ご協力をお願いいたします。
             <br />
             ・頒布印刷物について、奥付または奥付に準ずる欄に著者名やサークル名の表記がない場合、頒布をお断りすることがあります。

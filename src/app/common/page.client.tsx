@@ -67,24 +67,27 @@ const Page: React.FC = () => {
             </Card.Title>
           }
         >
-          <StyledCardSection delay={(delayCount++) / 10} title="はじめに">
+          <StyledCardSection delay={delayCount++ / 10} title="はじめに">
             一般参加を予定される総理の皆さんは、下記の諸注意をお読みいただいた上でご参加ください。
             <br />
             なお、ご不明な点がございましたら、お気軽に主催メールアドレス宛にお問い合わせください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="イベント名">
+          <StyledCardSection delay={delayCount++ / 10} title="イベント名">
             政剣マニフェスティアオンリー同人誌即売会
             <br />
             緊急交流イベント「漕ぎ出せ！ソクバイ海Ⅶ」
             <br />
             #アイムソウリー2024
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="日程・会場">
+          <StyledCardSection delay={delayCount++ / 10} title="日程・会場">
             2024年9月15日（日曜日）
             <br />
             ハイライフプラザいたばし
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="イベントスケジュール">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="イベントスケジュール"
+          >
             <Table>
               <Tbody>
                 <Tr>
@@ -127,14 +130,17 @@ const Page: React.FC = () => {
             <br />
             ※スケジュールは変更になることがあります
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="参加費">
+          <StyledCardSection delay={delayCount++ / 10} title="参加費">
             <Card.Contents title="サークル参加の総理の皆さん">
               「<AnchorLink to="/circle">サークル参加</AnchorLink>
               」ページをご確認ください。
             </Card.Contents>
             <Card.Contents title="一般参加の総理の皆さん">
-            
-              前売券を<Text as="span" fontWeight="400">開催当日の00:00</Text>まで販売します。
+              前売券を
+              <Text as="span" fontWeight="400">
+                開催当日の00:00
+              </Text>
+              まで販売します。
               <br />
               前売券は、LivePocketを利用したデジタルチケットです。
               <br />
@@ -172,7 +178,10 @@ const Page: React.FC = () => {
               」ページをご確認ください。
             </Card.Contents>
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="迷惑行為、危険行為の禁止">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="迷惑行為、危険行為の禁止"
+          >
             ・会場内外で走る、受付より外の会場外共用部に長時間立ち止まる、などの行為はご遠慮ください。
             <br />
             ・一箇所のサークルスペース前に長時間居座る、近隣のサークルスペースの前にはみ出す、などの行為は、他の参加者の迷惑になりますのでご遠慮ください。
@@ -183,7 +192,10 @@ const Page: React.FC = () => {
             <br />
             ・モデルガン・エアガンなどの武器類、楽器などの大きな音の鳴る物、引火物、アルコール（消毒用途を除く）、ペット、その他危険と思われるものの持ち込みは禁止です。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="会場内撮影について">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="会場内撮影について"
+          >
             ・会場内での動画撮影は一切禁止です。
             <br />
             ・会場内での写真撮影はサークルスペースや展示物、コスプレの撮影に限り可能です。ただし、人物が写り込まないようにご配慮ください。もし写り込んでしまったものをSNS等にアップロードする場合は【必ず加工を施し】個人の特定ができないようにしてください。
@@ -192,7 +204,10 @@ const Page: React.FC = () => {
             <br />
             ・コスプレ撮影を行う場合、サークルスペースが写り込まないようにご配慮ください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="会場利用規約厳守のお願い">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="会場利用規約厳守のお願い"
+          >
             ・共用部のコンセントの使用は禁止です。
             <br />
             ・荷物は受付より外の共用部には絶対に置かないでください。
@@ -201,19 +216,22 @@ const Page: React.FC = () => {
             <br />
             ・会場内非常口の前に荷物を置かないようにお願いいたします。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="喫煙に関するお願い">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="喫煙に関するお願い"
+          >
             ・喫煙スペースは今回【廃止】となりました。ご了承ください。
             <br />
             ・会場近隣の喫煙所をご利用ください。
             <br />
             ・なお、喫煙所以外での喫煙は厳禁です。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="落とし物について">
+          <StyledCardSection delay={delayCount++ / 10} title="落とし物について">
             ・落とし物・忘れ物などは【会場本部】までお届けください。
             <br />
             ・金銭・貴重品の紛失につきましては当イベント主催者では責任を負いかねますので、貴重品の管理にご注意ください。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="その他">
+          <StyledCardSection delay={delayCount++ / 10} title="その他">
             ・緊急の場合を除き、個人的な呼び出しはできません。
             <br />
             ・ケガをした方、気分の悪くなった方はお近くの戦挙管理委員までお申し出ください。
@@ -228,13 +246,16 @@ const Page: React.FC = () => {
             <br />
             ・会場内におけるマスクの着用は任意とします。
           </StyledCardSection>
-          <StyledCardSection delay={(delayCount++) / 10} title="コスプレに関する諸注意">
+          <StyledCardSection
+            delay={delayCount++ / 10}
+            title="コスプレに関する諸注意"
+          >
             ・コスプレ参加者向けのページ&nbsp;に掲載しております。コスプレ参加予定の方はご一読ください。
             <br />
             <AnchorLink to="/cosplay">https://festia.moe/cosplay</AnchorLink>
           </StyledCardSection>
           <StyledCardSection
-            delay={(delayCount++) / 10}
+            delay={delayCount++ / 10}
             title="※一般参加者による会場内頒布行為の禁止※"
           >
             会場内では、一般参加者による同人誌、同人グッズ、あるいはそれに準ずるものの頒布行為は全面的に禁止です。

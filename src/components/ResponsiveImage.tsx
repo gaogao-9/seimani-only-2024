@@ -1,6 +1,13 @@
 "use client";
 
-import { CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  CSSProperties,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styled from "@emotion/styled";
 import debounce from "lodash.debounce";
 
@@ -102,14 +109,23 @@ export const ResponsiveImage: React.VFC<ResponsiveImageProps> = ({
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [canvasSize, setCanvasSize] = useState<Size>({ w: 0, h: 0 });
-  const imageSize = useMemo<Size>(() => ({ w: imageWidth, h: imageHeight }), [imageWidth, imageHeight]);
+  const imageSize = useMemo<Size>(
+    () => ({ w: imageWidth, h: imageHeight }),
+    [imageWidth, imageHeight],
+  );
 
-  const observerCallback = useCallback((entry: Pick<ResizeObserverEntry, 'contentRect'>[]) => {
-    const [{ contentRect }] = entry;
-    setCanvasSize({ w: contentRect.width, h: contentRect.height });
-    onResize?.({ w: contentRect.width, h: contentRect.height });
-  }, [onResize]);
-  const debouncedObserverCallback = useMemo(() => debounce(observerCallback, 50), [observerCallback]);
+  const observerCallback = useCallback(
+    (entry: Pick<ResizeObserverEntry, "contentRect">[]) => {
+      const [{ contentRect }] = entry;
+      setCanvasSize({ w: contentRect.width, h: contentRect.height });
+      onResize?.({ w: contentRect.width, h: contentRect.height });
+    },
+    [onResize],
+  );
+  const debouncedObserverCallback = useMemo(
+    () => debounce(observerCallback, 50),
+    [observerCallback],
+  );
 
   useEffect(() => {
     if (wrapperRef.current === null) return;

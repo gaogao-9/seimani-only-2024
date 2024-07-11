@@ -59,7 +59,7 @@ const Page: React.FC = () => {
       setTransitionEnded(true);
     }, 200);
   }, []);
-  
+
   let delayCount = 0;
 
   return (
@@ -95,7 +95,7 @@ const Page: React.FC = () => {
             </WrapItem>
             <WrapItem width="295px">
               <List marginY={4} spacing={3}>
-                <StyledListItem delay={(delayCount++) / 10}>
+                <StyledListItem delay={delayCount++ / 10}>
                   <ListIcon
                     verticalAlign="middle"
                     as={FaCompass}
@@ -105,7 +105,7 @@ const Page: React.FC = () => {
                     会場: ハイライフプラザいたばし
                   </span>
                 </StyledListItem>
-                <StyledListItem delay={(delayCount++) / 10}>
+                <StyledListItem delay={delayCount++ / 10}>
                   <ListIcon
                     verticalAlign="middle"
                     as={FaClock}
@@ -116,7 +116,7 @@ const Page: React.FC = () => {
                   </span>
                 </StyledListItem>
                 <ListItem>&nbsp;</ListItem>
-                <StyledListItem delay={(delayCount++) / 10}>
+                <StyledListItem delay={delayCount++ / 10}>
                   <ListIcon
                     verticalAlign="middle"
                     as={FaTrain}
@@ -126,7 +126,7 @@ const Page: React.FC = () => {
                     JR埼京線 板橋駅 徒歩1分
                   </span>
                 </StyledListItem>
-                <StyledListItem delay={(delayCount++) / 10}>
+                <StyledListItem delay={delayCount++ / 10}>
                   <ListIcon
                     verticalAlign="middle"
                     as={FaTrain}
@@ -136,7 +136,7 @@ const Page: React.FC = () => {
                     都営三田線 新板橋駅 徒歩3分
                   </span>
                 </StyledListItem>
-                <StyledListItem delay={(delayCount++) / 10}>
+                <StyledListItem delay={delayCount++ / 10}>
                   <ListIcon
                     verticalAlign="middle"
                     as={FaTrain}

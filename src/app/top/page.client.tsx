@@ -1,22 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
+import { css } from "@emotion/css";
 import { keyframes } from "@emotion/react";
 import { ResponsiveImage, isSmallSize } from "@/components/ResponsiveImage";
 import { useTopImageContext } from "@/utils/useTopImageContext";
-
-const isMobileMac = (): boolean => {
-  if (typeof window === "undefined") return false;
-
-  const ua = window.navigator.userAgent.toLowerCase();
-
-  return (
-    ua.indexOf("ipad") > -1 ||
-    (ua.indexOf("macintosh") > -1 && "ontouchend" in document)
-  );
-};
 
 const animationStartDelay = 0.5;
 
@@ -29,53 +19,6 @@ const BackgroundInAnimation = keyframes`
   }
   100% {
     transform: translateY(0%) scale(1, 1);
-  }
-`;
-
-const RightSlideInAnimation = keyframes`
-  0% {
-    transform: translateX(120%) rotateZ(0deg);
-  }
-  50% {
-    transform: translateX(0%)  rotateZ(-30deg);
-  }
-  100% {
-    transform: translateX(0%) scale(1, 1);
-  }
-`;
-
-const LeftSlideInAnimation = keyframes`
-  0% {
-    transform: translateX(-120%) rotateZ(0deg);
-  }
-  50% {
-    transform: translateX(0%)  rotateZ(30deg);
-  }
-  100% {
-    transform: translateX(0%) scale(1, 1);
-  }
-`;
-
-const MoveAnimation = keyframes`
-  0% {
-    transform: translateY(0%);
-    animation-timing-function: ease-out;
-  }
-  25% {
-    transform: translateY(-1%);
-    animation-timing-function: ease-in;
-  }
-  50% {
-    transform: translateY(0%);
-    animation-timing-function: linear;
-  }
-  75% {
-    transform: translateY(1%);
-    animation-timing-function: ease-in;
-  }
-  100% {
-    transform: translateY(0%);
-    animation-timing-function: ease-out;
   }
 `;
 
@@ -112,36 +55,14 @@ const ImageWrapper = styled.div<{
 `;
 
 const BackgroundImageWrapper = styled(ImageWrapper)`
-  animation: 0.5s ease ${animationStartDelay + 0.1}s 1 running both
-    ${BackgroundInAnimation};
-  transform-origin: center bottom;
-`;
-
-const CartierImageWrapper = styled(ImageWrapper)`
-  animation: 0.8s ease ${animationStartDelay + 1}s 1 running both
-      ${RightSlideInAnimation},
-    6s ease ${animationStartDelay + 2}s infinite running forwards
-      ${MoveAnimation};
-  transform-origin: center bottom;
-`;
-
-const JeaneImageWrapper = styled(ImageWrapper)`
-  animation: 0.8s ease ${animationStartDelay + 1.2}s 1 running both
-      ${LeftSlideInAnimation},
-    6s ease ${animationStartDelay + 2}s infinite running forwards reverse
-      ${MoveAnimation};
-  transform-origin: center bottom;
-`;
-
-const EffectImageWrapper = styled(ImageWrapper)`
-  animation: 0.5s ease ${animationStartDelay + 1.7}s 1 running both
+  animation: 0.5s ease ${animationStartDelay + 0}s 1 running both
     ${BackgroundInAnimation};
   transform-origin: center bottom;
 `;
 
 const logoImageSize = {
-  w: 869,
-  h: 604,
+  w: 1614,
+  h: 1862,
 };
 
 type LogoWrapperProps = {
@@ -150,35 +71,26 @@ type LogoWrapperProps = {
   offsetY: number;
 };
 
-const LogoWrapper = styled(ImageWrapper)<LogoWrapperProps>`
-  animation: 0.5s ease ${animationStartDelay + 2.3}s 1 running both
+const LogoWrapper = styled(ImageWrapper)`
+  animation: 0.5s ease ${animationStartDelay + 1}s 1 running both
     ${LogoInAnimation};
+`;
 
-  & img {
-    transform: scale(0.45)
-      translate(
-        ${({ position, offsetX }) =>
-          logoImageSize.w *
-          ((position === "bottom" ? -0.01 : -0.7) + offsetX)}px,
-        ${({ position, offsetY }) =>
-          logoImageSize.h * ((position === "bottom" ? 0.6 : -0.25) + offsetY)}px
-      );
-  }
+const createLogoWrapperTranslateStyle = ({ position, offsetX, offsetY  }: LogoWrapperProps) => css`
+  transition: transform 0.45s ease;
+  transform: scale(0.25)
+    translate(
+      ${logoImageSize.w * ((position === "bottom" ? 0 : -1.05) + offsetX)}px,
+      ${logoImageSize.h * ((position === "bottom" ? 1.3 : 1.4) + offsetY)}px
+    );
 `;
 
 const Page: React.FC = () => {
   const topImageContext = useTopImageContext();
-  const [imageSize, setImageSize] = useState(() => {
-    return isMobileMac() || isSmallSize()
-      ? ({
-          w: 600,
-          h: 800,
-        } as const)
-      : ({
-          w: 1200,
-          h: 1600,
-        } as const);
-  });
+  const imageSize = useMemo(() => ({
+    w: 1200,
+    h: 1600,
+  } as const), []);
   const [logoPosition, setLogoPosition] = useState<"bottom" | "right">(
     "bottom",
   );
@@ -189,14 +101,14 @@ const Page: React.FC = () => {
   const onResize = useCallback((canvasSize: { w: number; h: number }) => {
     const imageRatio = logoImageSize.w / logoImageSize.h;
     const canvasRatio = canvasSize.w / canvasSize.h;
-    const positionThrethold = 1.5;
+    const positionThrethold = 1.2;
     const rightOffsetThrethold = 3;
 
     if (canvasRatio <= positionThrethold && canvasRatio >= imageRatio) {
       const offsetRate =
         (canvasRatio - imageRatio) / (positionThrethold - imageRatio);
 
-      setLogoOffset([0, offsetRate * -0.18]);
+      setLogoOffset([0, offsetRate*0]);
     }
 
     if (
@@ -207,32 +119,10 @@ const Page: React.FC = () => {
         (rightOffsetThrethold - canvasRatio) /
         (rightOffsetThrethold - positionThrethold);
 
-      setLogoOffset([offsetRate * 0.11, offsetRate * 0.09]);
+      setLogoOffset([offsetRate*-0.2, 0]);
     }
 
     setLogoPosition(canvasRatio > positionThrethold ? "right" : "bottom");
-  }, []);
-
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((entry) => {
-      setImageSize(
-        isMobileMac() || isSmallSize()
-          ? ({
-              w: 600,
-              h: 800,
-            } as const)
-          : ({
-              w: 1200,
-              h: 1600,
-            } as const),
-      );
-    });
-
-    resizeObserver.observe(window.document.body);
-
-    return () => {
-      resizeObserver.unobserve(window.document.body);
-    };
   }, []);
 
   if (!topImageContext.loaded) return <></>;
@@ -244,7 +134,7 @@ const Page: React.FC = () => {
         rectHeight={["calc(100vh - 60px)", "calc(100dvh - 60px)"]}
         landscapePositionX="center"
         landscapePositionY={0.4}
-        portraitPositionX={0.47}
+        portraitPositionX={0.51}
         portraitPositionY="bottom"
         imageWidth={imageSize.w}
         imageHeight={imageSize.h}
@@ -254,16 +144,39 @@ const Page: React.FC = () => {
       >
         <BackgroundImageWrapper width={imageSize.w} height={imageSize.h}>
           <Image
-            src={
-              isMobileMac() || isSmallSize()
-                ? topImageContext.images["top.png"]
-                : topImageContext.images["top.png"]
-            }
+            src={topImageContext.images["top.png"]}
             width={imageSize.w}
             height={imageSize.h}
             alt="トップ画像"
           />
         </BackgroundImageWrapper>
+      </ResponsiveImage>
+      <ResponsiveImage
+        rectWidth="100%"
+        rectHeight={["calc(100vh - 60px)", "calc(100dvh - 60px)"]}
+        landscapePositionX={0.5}
+        landscapePositionY="bottom"
+        portraitPositionX={0.5}
+        portraitPositionY="bottom"
+        imageWidth={logoImageSize.w}
+        imageHeight={logoImageSize.h}
+        minimumHeightThretholdRate={300 / 100}
+        minimumWidthThretholdRate={45 / 100}
+        data-grid-area="logo"
+        onResize={onResize}
+      >
+        <LogoWrapper
+          width={logoImageSize.w}
+          height={logoImageSize.h}
+        >
+          <Image
+            src={topImageContext.images["logo.png"]}
+            width={logoImageSize.w}
+            height={logoImageSize.h}
+            className={createLogoWrapperTranslateStyle({ position: logoPosition, offsetX: logoOffsetX, offsetY: logoOffsetY })}
+            alt="ロゴ"
+          />
+        </LogoWrapper>
       </ResponsiveImage>
     </ActorArea>
   );

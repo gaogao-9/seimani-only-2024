@@ -2,6 +2,7 @@
 
 import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import styled from "@emotion/styled";
+import debounce from "lodash.debounce";
 
 const Wrapper = styled.div<{
   width:
@@ -23,6 +24,7 @@ const Wrapper = styled.div<{
 const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
+  transition: transform 0.45s ease;
   transform-origin: left top;
   transform-style: inherit;
   backface-visibility: hidden;
@@ -99,36 +101,29 @@ export const ResponsiveImage: React.VFC<ResponsiveImageProps> = ({
   ...props
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [canvasSize, setCanvasSize] = useState<Size>({
-    w: 0,
-    h: 0,
-  });
-  const imageSize = useMemo<Size>(
-    () => ({ w: imageWidth, h: imageHeight }),
-    [imageWidth, imageHeight],
-  );
+  const [canvasSize, setCanvasSize] = useState<Size>({ w: 0, h: 0 });
+  const imageSize = useMemo<Size>(() => ({ w: imageWidth, h: imageHeight }), [imageWidth, imageHeight]);
+
+  const observerCallback = useMemo(() => debounce((entry: Pick<ResizeObserverEntry, 'contentRect'>[]) => {
+    const [{ contentRect }] = entry;
+    setCanvasSize({ w: contentRect.width, h: contentRect.height });
+    onResize?.({ w: contentRect.width, h: contentRect.height });
+  }, 50), [onResize]);
 
   useEffect(() => {
     if (wrapperRef.current === null) return;
 
     const target = wrapperRef.current;
-
-    const resizeObserver = new ResizeObserver((entry) => {
-      const [{ contentRect }] = entry;
-      setCanvasSize({ w: contentRect.width, h: contentRect.height });
-      onResize?.({ w: contentRect.width, h: contentRect.height });
-    });
-
+    const resizeObserver = new ResizeObserver(observerCallback);
     const contentRect = target.getBoundingClientRect();
-    setCanvasSize({ w: contentRect.width, h: contentRect.height });
-    onResize?.({ w: contentRect.width, h: contentRect.height });
 
+    observerCallback([{ contentRect }]);
     resizeObserver.observe(target);
 
     return () => {
       resizeObserver.unobserve(target);
     };
-  }, [onResize]);
+  }, [observerCallback]);
 
   const scale = useMemo(() => {
     const imageRatio = imageSize.w / imageSize.h;

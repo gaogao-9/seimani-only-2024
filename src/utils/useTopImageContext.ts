@@ -2,6 +2,7 @@ import { createImageContext } from "@/utils/useImageContext";
 
 const imageNames = [
   "top.png",
+  "logo.png",
 ] as const;
 
 const { ImageContext, useImageContext, useImageContextValue } =

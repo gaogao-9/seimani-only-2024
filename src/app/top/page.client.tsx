@@ -62,7 +62,7 @@ const BackgroundImageWrapper = styled(ImageWrapper)`
 
 const originalLogoImageSize = {
   w: 800,
-  h: 923,
+  h: 928,
 } as const;
 
 const logoImageSize = {

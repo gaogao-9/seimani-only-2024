@@ -114,6 +114,9 @@ const Page: React.FC = () => {
         (canvasRatio - imageRatio) / (positionThrethold - imageRatio);
 
       setLogoOffset([0, offsetRate*0]);
+    } else if (canvasRatio <= positionThrethold) {
+      // オフセット条件に当てはまらないがポジションがrightの場合は0位置として更新
+      setLogoOffset([0, 0]);
     }
 
     if (
@@ -125,6 +128,9 @@ const Page: React.FC = () => {
         (rightOffsetThrethold - positionThrethold);
 
       setLogoOffset([offsetRate*-0.1, 0]);
+    } else if (canvasRatio > positionThrethold) {
+      // オフセット条件に当てはまらないがポジションがbottomの場合は0位置として更新
+      setLogoOffset([0, 0]);
     }
 
     setLogoPosition(canvasRatio > positionThrethold ? "right" : "bottom");

@@ -81,11 +81,15 @@ const LogoWrapper = styled(ImageWrapper)`
     ${LogoInAnimation};
 `;
 
-const createLogoWrapperTranslateStyle = ({ position, offsetX, offsetY  }: LogoWrapperProps) => css`
+const createLogoWrapperTranslateStyle = ({
+  position,
+  offsetX,
+  offsetY,
+}: LogoWrapperProps) => css`
   transition: transform 0.45s ease;
   transform: translate(
-      ${originalLogoImageSize.w * ((position === "bottom" ? 0.5 : 0.26) + offsetX) - (logoImageSize.w / 2)}px,
-      ${originalLogoImageSize.h * ((position === "bottom" ? 0.85 : 0.85) + offsetY) - (logoImageSize.h / 2)}px
+      ${originalLogoImageSize.w * ((position === "bottom" ? 0.5 : 0.26) + offsetX) - logoImageSize.w / 2}px,
+      ${originalLogoImageSize.h * ((position === "bottom" ? 0.85 : 0.85) + offsetY) - logoImageSize.h / 2}px
     );
 `;
 
@@ -108,28 +112,26 @@ const Page: React.FC = () => {
     const canvasRatio = canvasSize.w / canvasSize.h;
     const positionThrethold = 1.2;
     const rightOffsetThrethold = 3;
+    const offsetPosition = canvasRatio > positionThrethold ? "right" : "bottom";
 
     if (canvasRatio <= positionThrethold && canvasRatio >= imageRatio) {
       const offsetRate =
         (canvasRatio - imageRatio) / (positionThrethold - imageRatio);
 
-      setLogoOffset([0, offsetRate*0]);
-    } else if (canvasRatio <= positionThrethold) {
-      // オフセット条件に当てはまらないがポジションがrightの場合は0位置として更新
+      setLogoOffset([0, offsetRate * 0]);
+    } else if (offsetPosition === "bottom") {
+      // オフセット条件に当てはまらないがポジションがbottomの場合は0位置として更新
       setLogoOffset([0, 0]);
     }
 
-    if (
-      canvasRatio <= rightOffsetThrethold &&
-      canvasRatio > positionThrethold
-    ) {
+    if (offsetPosition === "right" && canvasRatio <= rightOffsetThrethold) {
       const offsetRate =
         (rightOffsetThrethold - canvasRatio) /
         (rightOffsetThrethold - positionThrethold);
 
-      setLogoOffset([offsetRate*-0.1, 0]);
-    } else if (canvasRatio > positionThrethold) {
-      // オフセット条件に当てはまらないがポジションがbottomの場合は0位置として更新
+      setLogoOffset([offsetRate * -0.1, 0]);
+    } else if (offsetPosition === "right") {
+      // オフセット条件に当てはまらないがポジションがrightの場合は0位置として更新
       setLogoOffset([0, 0]);
     }
 
@@ -184,7 +186,11 @@ const Page: React.FC = () => {
             src={topImageContext.images["logo.png"]}
             width={logoImageSize.w}
             height={logoImageSize.h}
-            className={createLogoWrapperTranslateStyle({ position: logoPosition, offsetX: logoOffsetX, offsetY: logoOffsetY })}
+            className={createLogoWrapperTranslateStyle({
+              position: logoPosition,
+              offsetX: logoOffsetX,
+              offsetY: logoOffsetY,
+            })}
             alt="ロゴ"
           />
         </LogoWrapper>

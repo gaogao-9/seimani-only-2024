@@ -24,3 +24,12 @@ export const staffs = [
     disabled: false,
   },
 ];
+
+export const keyVisualStaffs = [
+  {
+    name: "takenokonokono1",
+    nickname: "さば",
+    ext: "jpg",
+    disabled: false,
+  },
+];

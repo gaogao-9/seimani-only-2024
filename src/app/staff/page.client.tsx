@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { Flex, keyframes, Center, Avatar } from "@chakra-ui/react";
 import { AnchorLink } from "@/components/AnchorLink";
 import { Card } from "@/components/Card";
-import { staffs } from "@/foundation/staffs";
+import { staffs, keyVisualStaffs } from "@/foundation/staffs";
 
 const TextFadeIn = keyframes`
   0% {
@@ -28,6 +28,7 @@ const StyledIconWrapper = styled.div<{ delay: number }>`
 
 const Page: React.FC = () => {
   const [transitionEnded, setTransitionEnded] = useState(false);
+
   useEffect(() => {
     setTimeout(() => {
       window.sessionStorage.setItem("navigationStatus", "navigationEnd");
@@ -36,6 +37,8 @@ const Page: React.FC = () => {
       setTransitionEnded(true);
     }, 200);
   }, []);
+
+  let delayCount = 0;
 
   return (
     <>
@@ -57,10 +60,34 @@ const Page: React.FC = () => {
             </Card.Title>
           }
         >
-          <Card.Section title="">
+          <Card.Section title="運営スタッフ">
             <Center flexWrap="wrap">
-              {staffs.map((staff, i) => (
-                <StyledIconWrapper delay={i * 0.1} key={staff.name}>
+              {staffs.map((staff) => (
+                <StyledIconWrapper delay={delayCount++ * 0.1} key={staff.name}>
+                  {!staff.disabled ? (
+                    <AnchorLink href={`https://twitter.com/${staff.name}`}>
+                      <Avatar
+                        size="2xl"
+                        m="3"
+                        name={staff.nickname}
+                        src={`/assets/img/staff/${staff.name}.${staff.ext}`}
+                      />
+                    </AnchorLink>
+                  ) : (
+                    <Avatar
+                      size="2xl"
+                      name={staff.nickname}
+                      src={`/assets/img/staff/${staff.name}.${staff.ext}`}
+                    />
+                  )}
+                </StyledIconWrapper>
+              ))}
+            </Center>
+          </Card.Section>
+          <Card.Section title="キービジュアル">
+            <Center flexWrap="wrap">
+              {keyVisualStaffs.map((staff) => (
+                <StyledIconWrapper delay={delayCount++ * 0.1} key={staff.name}>
                   {!staff.disabled ? (
                     <AnchorLink href={`https://twitter.com/${staff.name}`}>
                       <Avatar

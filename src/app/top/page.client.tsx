@@ -60,9 +60,14 @@ const BackgroundImageWrapper = styled(ImageWrapper)`
   transform-origin: center bottom;
 `;
 
+const originalLogoImageSize = {
+  w: 800,
+  h: 923,
+} as const;
+
 const logoImageSize = {
-  w: 1614,
-  h: 1862,
+  w: originalLogoImageSize.w / 4,
+  h: originalLogoImageSize.h / 4,
 };
 
 type LogoWrapperProps = {
@@ -78,19 +83,19 @@ const LogoWrapper = styled(ImageWrapper)`
 
 const createLogoWrapperTranslateStyle = ({ position, offsetX, offsetY  }: LogoWrapperProps) => css`
   transition: transform 0.45s ease;
-  transform: scale(0.25)
-    translate(
-      ${logoImageSize.w * ((position === "bottom" ? 0 : -1.05) + offsetX)}px,
-      ${logoImageSize.h * ((position === "bottom" ? 1.3 : 1.4) + offsetY)}px
+  transform: translate(
+      ${originalLogoImageSize.w * ((position === "bottom" ? 0.5 : 0.26) + offsetX) - (logoImageSize.w / 2)}px,
+      ${originalLogoImageSize.h * ((position === "bottom" ? 0.85 : 0.85) + offsetY) - (logoImageSize.h / 2)}px
     );
 `;
 
+const imageSize = {
+  w: 1200,
+  h: 1600,
+} as const;
+
 const Page: React.FC = () => {
   const topImageContext = useTopImageContext();
-  const imageSize = useMemo(() => ({
-    w: 1200,
-    h: 1600,
-  } as const), []);
   const [logoPosition, setLogoPosition] = useState<"bottom" | "right">(
     "bottom",
   );
@@ -119,7 +124,7 @@ const Page: React.FC = () => {
         (rightOffsetThrethold - canvasRatio) /
         (rightOffsetThrethold - positionThrethold);
 
-      setLogoOffset([offsetRate*-0.2, 0]);
+      setLogoOffset([offsetRate*-0.1, 0]);
     }
 
     setLogoPosition(canvasRatio > positionThrethold ? "right" : "bottom");
@@ -158,16 +163,16 @@ const Page: React.FC = () => {
         landscapePositionY="bottom"
         portraitPositionX={0.5}
         portraitPositionY="bottom"
-        imageWidth={logoImageSize.w}
-        imageHeight={logoImageSize.h}
+        imageWidth={originalLogoImageSize.w}
+        imageHeight={originalLogoImageSize.h}
         minimumHeightThretholdRate={300 / 100}
         minimumWidthThretholdRate={45 / 100}
         data-grid-area="logo"
         onResize={onResize}
       >
         <LogoWrapper
-          width={logoImageSize.w}
-          height={logoImageSize.h}
+          width={originalLogoImageSize.w}
+          height={originalLogoImageSize.h}
         >
           <Image
             src={topImageContext.images["logo.png"]}

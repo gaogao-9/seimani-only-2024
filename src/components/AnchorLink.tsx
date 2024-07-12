@@ -16,7 +16,7 @@ export interface AnchorLinkProps
   children: React.ReactNode;
 }
 
-export const AnchorLink: React.VFC<AnchorLinkProps> = ({
+export const AnchorLink: React.FC<AnchorLinkProps> = ({
   href,
   to,
   children,

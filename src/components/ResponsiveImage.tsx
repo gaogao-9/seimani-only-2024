@@ -92,7 +92,7 @@ export type ResponsiveImageProps = {
   onResize?: (canvasSize: Size) => void;
 };
 
-export const ResponsiveImage: React.VFC<ResponsiveImageProps> = ({
+export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   rectWidth,
   rectHeight,
   imageWidth,
@@ -239,19 +239,20 @@ export const ResponsiveImage: React.VFC<ResponsiveImageProps> = ({
     portraitRateY,
   ]);
 
+  const style = useMemo(
+    () => ({
+      transform: `translate(${
+        !Number.isNaN(translate.x) ? translate.x : 0
+      }px, ${!Number.isNaN(translate.y) ? translate.y : 0}px) scale(${
+        !Number.isNaN(scale.x) ? scale.x : 0
+      }, ${!Number.isNaN(scale.y) ? scale.y : 0})`,
+    }),
+    [scale.x, scale.y, translate.x, translate.y],
+  );
+
   return (
     <Wrapper ref={wrapperRef} width={rectWidth} height={rectHeight} {...props}>
-      <ImageContainer
-        style={{
-          transform: `translate(${
-            !Number.isNaN(translate.x) ? translate.x : 0
-          }px, ${!Number.isNaN(translate.y) ? translate.y : 0}px) scale(${
-            !Number.isNaN(scale.x) ? scale.x : 0
-          }, ${!Number.isNaN(scale.y) ? scale.y : 0})`,
-        }}
-      >
-        {children}
-      </ImageContainer>
+      <ImageContainer style={style}>{children}</ImageContainer>
     </Wrapper>
   );
 };

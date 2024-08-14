@@ -27,9 +27,11 @@ export const originalLogoImageSize = {
   h: 928,
 } as const;
 
+const imageScale = 0.25;
+
 export const logoImageSize = {
-  w: originalLogoImageSize.w / 4,
-  h: originalLogoImageSize.h / 4,
+  w: originalLogoImageSize.w * imageScale,
+  h: originalLogoImageSize.h * imageScale,
 };
 
 export const LogoWrapper = styled(ImageWrapper)`

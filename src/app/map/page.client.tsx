@@ -2,6 +2,7 @@
 
 import {
   Flex,
+  Image,
   List,
   ListIcon,
   ListItem,
@@ -13,6 +14,7 @@ import { FaTrain, FaCompass, FaClock } from "react-icons/fa";
 import styled from "@emotion/styled";
 import { Card } from "@/components/Card";
 import { useEffect, useState } from "react";
+import { AnchorLink } from "@/components/AnchorLink";
 
 const TextFadeIn = keyframes`
   0% {
@@ -149,6 +151,20 @@ const Page: React.FC = () => {
               </List>
             </WrapItem>
           </Wrap>
+        </Card>
+        <Card title={<Card.Title>会場地図</Card.Title>}>
+          <Card.Section title="">
+            <AnchorLink href="/assets/img/map.png">
+              <Image alt="会場地図" src="/assets/img/map.png" />
+            </AnchorLink>
+          </Card.Section>
+        </Card>
+        <Card title={<Card.Title>サークルリスト</Card.Title>}>
+          <Card.Section title="">
+            <AnchorLink href="/assets/img/circlelist.png">
+              <Image alt="サークルリスト" src="/assets/img/circlelist.png" />
+            </AnchorLink>
+          </Card.Section>
         </Card>
       </Flex>
     </>

@@ -64,7 +64,38 @@ const Page: React.FC = () => {
             <br />
             会場を政霊たちのイラストで華やかに飾りましょう！
             <br />
-            募集条件や宛先は後日お知らせします。
+            <br />
+            色紙応募条件
+            <br />
+            ・色紙に「2024/09/15 #アイムソウリー2024」と書く
+            <br />
+            ・政マニ関連の色紙である
+            <br />
+            ・色紙大きさ自由
+            <br />
+            ・モノクロ、カラーいずれも可
+            <br />
+            ・枚数制限なし
+            <br />
+            ・年齢制限イラストは不可
+            <br />
+            <br />
+            ご注意とお願い
+            <br />
+            ・色紙は必ず透明OPP袋に入れてください
+            <br />
+            ・一般参加総理/当日来場できない総理は、事前にヤマト運輸の宅急便で発送してください
+            <br />
+            <AspectRatio maxW="80%" my={6} mx="auto" ratio={1092 / 616}>
+              <AnchorLink href="/assets/img/event/invoice_kikaku.jpg">
+                <Image
+                  src="/assets/img/event/invoice_kikaku.jpg"
+                  alt="色紙発送用伝票"
+                  fill
+                />
+              </AnchorLink>
+            </AspectRatio>
+            ・サークル参加総理のみ、会場への直接持ち込みOKです。受付終了は12:00予定です
           </StyledCardSection>
           <StyledCardSection delay={delayCount++ / 10} title="ホワイトボード">
             こちらも毎回恒例のホワイトボード！

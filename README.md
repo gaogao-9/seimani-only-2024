@@ -1,3 +1,3 @@
 # seimani-only-2024
 
-https://festia.moe
+https://only2024.festia.moe

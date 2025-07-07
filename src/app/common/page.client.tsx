@@ -252,7 +252,9 @@ const Page: React.FC = () => {
           >
             ・コスプレ参加者向けのページ&nbsp;に掲載しております。コスプレ参加予定の方はご一読ください。
             <br />
-            <AnchorLink to="/cosplay">https://festia.moe/cosplay</AnchorLink>
+            <AnchorLink to="/cosplay">
+              https://only2024.festia.moe/cosplay
+            </AnchorLink>
           </StyledCardSection>
           <StyledCardSection
             delay={delayCount++ / 10}
